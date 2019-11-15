@@ -12,9 +12,11 @@ void fun()
 int main()
 {
     ThreadPool threadPool(4);
-    sleep(5);
     for(int i = 0; i < 20; i ++)
-    threadPool.enqueue([=]{std::cout << "Task" << i <<  std::endl;});
+    {
+        threadPool.enqueue([=]{std::cout << "Task" << i <<  std::endl; usleep(100);});
+        usleep(1);
+    }
 
     return 0;
 }
